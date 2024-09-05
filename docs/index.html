@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de Go</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Jeu de Go</h1>
+    </header>
+    <div id="info-ribbon">
+        <p>Informations utiles sur la partie</p>
+    </div>
+    <div id="arrow-container">
+        <div id="arrow">&#9660;</div>
+    </div>
+    <button id="Bouton_mode_couleur">Mode sombre</button>
+
+    <main>
+        <div class="left-panel">
+            <button id="rulesButton">Règles</button>
+            <div id="rules">
+                <h2>Règles du Jeu</h2>
+                <p>Le joueur qui a les pierres noires commence.<br>
+                    Chacun à leur tour, les joueurs pose une pierre de leur couleur.<br>
+                    Il est impossible de recréer une situation ayant déja exister sur le plateau.<br>
+                    Le jeu de Go se joue sur un plateau de 19x19, mais il peut aussi se jouer sur des plateaux plus petits comme 13x13 ou 9x9.</p>
+                <button id="backButton">Retour</button>
+            </div>
+
+            <section id="game-settings">
+                <h2>Paramètres du Jeu</h2>
+                <label for="board-size">Taille du plateau :</label>
+                <select id="board-size">
+                    <option value="19">19x19</option>
+                    <option value="13">13x13</option>
+                    <option value="9">9x9</option>
+                </select><br>
+                <button id="start-game" onclick="startGame()">Commencer le jeu</button>
+                <button onclick="recharge()">Recharger le plateau</button><br>
+            </section>
+
+            <section id="game-info">
+                <h2>Informations du Jeu</h2>
+                <p>Nombre de tours : <span id="turn-counter">0</span></p>
+                <p>Joueur actif : <span id="current-player" class="player-indicator"></span></p>
+                <p>Pierres blanches capturées : <span id="captured-whites-stones">0</span></p>
+                <p>Pierres noires capturées : <span id="captured-blacks-stones">0</span></p>
+                <button id="pass" onclick="nextMove()">Passer le tour</button>
+                <button id="undo-move" onclick="undoMove()"><h1>⤾</h1></button>
+                <button id="redo-move" onclick="redoMove()"><h1>⤿</h1></button><br>
+            </section>
+        </div>
+
+        <div id="container">
+            <canvas id="boardCanvas" width="600" height="600"></canvas>
+            <canvas id="stoneCanvas" width="600" height="600"></canvas>
+        </div>
+    </main>
+    <script src="go.js"></script>
+    <script src="drawBoard.js"></script>
+    <script src="ui.js"></script>
+    <script src="History.js"></script>
+</body>
+</html>
